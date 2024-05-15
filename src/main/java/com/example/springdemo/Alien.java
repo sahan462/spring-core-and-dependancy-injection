@@ -1,6 +1,5 @@
 package com.example.springdemo;
 
-import com.sun.jna.platform.unix.solaris.Kstat2;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
