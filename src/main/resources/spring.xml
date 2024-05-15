@@ -3,6 +3,30 @@
        xsi:schemaLocation="
         http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
-    <bean id="human" class="com.example.springdemo.Human">
+    <bean id="human_1" class="com.example.springdemo.Human">
+    </bean>
+
+    <!-- setter injection   -->
+    <bean id="human_2" class="com.example.springdemo.Human" scope="prototype">
+        <property name="age" value="21"></property> <!-- initialize normal attributes -->
+        <property name="lap" ref="lap1"></property><!-- initialize references -->
+    </bean>
+
+    <!-- constructor injection    -->
+    <bean id="human_5" class="com.example.springdemo.Human">
+        <constructor-arg index="0" value="22"/>
+        <constructor-arg index="1" ref="lap1" />
+        <!-- In this case parameters are getting matched with the constructor as the order we defined here -->
+        <!--If the order is not correct we have to either mention the variable type or the index number-->
+        <!--Also we can use constructorProperties annotations to the relevant constructors -->
+    </bean>
+
+    <bean id="lap1" class="com.example.springdemo.Laptop">
+    </bean>
+
+    <bean id="human_3" class="com.example.springdemo.Human">
+    </bean>
+
+    <bean id="human_4" class="com.example.springdemo.Human">
     </bean>
 </beans>
