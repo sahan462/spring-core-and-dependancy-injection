@@ -6,13 +6,16 @@
     <bean id="human_1" class="com.example.springdemo.Human">
     </bean>
 
-    <!-- setter injection   -->
+    <!-- ***************************************************************************************************************** -->
+
+    <!-- ******************* setter injection ***************************  -->
     <bean id="human_2" class="com.example.springdemo.Human" scope="prototype">
         <property name="age" value="21"></property> <!-- initialize normal attributes -->
         <property name="lap" ref="lap1"></property><!-- initialize references -->
     </bean>
 
-    <!-- constructor injection    -->
+
+    <!-- ******************** constructor injection *********************    -->
     <bean id="human_5" class="com.example.springdemo.Human">
         <constructor-arg index="0" value="22"/>
         <constructor-arg index="1" ref="lap1" />
@@ -20,6 +23,37 @@
         <!--If the order is not correct we have to either mention the variable type or the index number-->
         <!--Also we can use constructorProperties annotations to the relevant constructors -->
     </bean>
+
+
+    <!-- ************** autowiring **********************-->
+    <bean id="human_6" class="com.example.springdemo.Human" autowire="byName"> <!-- byType, -->
+    </bean>
+
+    <!--in this case when we define dependency we add id as the property name defined in the relevant class-->
+    <bean id="asusLap" class="com.example.springdemo.Human">
+    </bean>
+
+    <!-- here if you need separate dependency object for each human object creation, you need to add scope="prototype"    -->
+    <!-- here you can use primary beans to avoid confusions -->
+
+
+    <!-- ********************* Lazy init bean ***************************** -->
+    <!-- when you load xml file it will create all the defined objects in the singleton object though we do not create an object explicitly-->
+
+    <!--
+    Singleton Scope: When the Spring container is initialized, all singleton beans are created and initialized
+    automatically. This means that when you load the XML configuration file, all beans with singleton scope are
+    instantiated immediately.
+
+    Prototype Scope: Beans defined with prototype scope are not instantiated automatically when the Spring container
+    is initialized. Instead, a new instance of a prototype-scoped bean is created each time it is requested from the container.
+    This means that the Spring container does not create or manage a prototype bean's lifecycle beyond the creation phase.
+    -->
+
+    <bean id="human_7" class="com.example.springdemo.Human" lazy-init="true">
+    </bean>
+
+    <!-- ***************************************************************************************************************** -->
 
     <bean id="lap1" class="com.example.springdemo.Laptop">
     </bean>

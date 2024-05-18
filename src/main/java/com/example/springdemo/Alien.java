@@ -1,6 +1,7 @@
 package com.example.springdemo;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 
 @Component //this annotation is used to say that the spring should be responsible hence it can use dependancy injection to create objects
@@ -13,11 +14,12 @@ public class Alien {
     //simply this says that alien class needs to check for the container for laptop class object, because it can not access
     //container directly like in main class.
     @Autowired
-    Laptop laptop;
+    @Qualifier("laptop")
+    Computer computer;
 
     public void code(){
         System.out.println("I am alien");
-        laptop.compile();
+        computer.compile();
     }
 
 }

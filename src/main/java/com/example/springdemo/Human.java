@@ -3,15 +3,16 @@ package com.example.springdemo;
 public class Human {
 
     private int age;
-    private Laptop lap;
+    private Computer asusLap;
 
     public Human(){
 
     }
 
-    public Human(int age, Laptop lap){
+
+    public Human(int age, Computer lap){
         this.age = age;
-        this.lap = lap;
+        this.asusLap = lap;
     }
 
     public void work(){
@@ -23,11 +24,11 @@ public class Human {
     public void setAge(int age){
         this.age = age;
     }
-    public Laptop getLap(){
-        return this.lap;
+    public Computer getLap(){
+        return this.asusLap;
     }
     public void setLap(Laptop lap) {
-        this.lap = lap;
+        this.asusLap = lap;
     }
 
 
