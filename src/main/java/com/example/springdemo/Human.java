@@ -9,7 +9,6 @@ public class Human {
 
     }
 
-
     public Human(int age, Computer lap){
         this.age = age;
         this.asusLap = lap;
@@ -31,5 +30,7 @@ public class Human {
         this.asusLap = lap;
     }
 
-
+    public void setAsusLap(Laptop asusLap) {
+        this.asusLap = asusLap;
+    }
 }
