@@ -1,9 +1,11 @@
 package com.example.springdemo;
 
+import com.example.springdemo.config.AppConfig;
 import org.springframework.context.ApplicationContext; // Correct import statement
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 @SpringBootApplication(exclude = {DataSourceAutoConfiguration.class})
@@ -36,6 +38,7 @@ public class SpringDemoApplication {
         Alien obj_1 = (Alien) annotationContext.getBean("alien");
         obj_1.code();
 
+
         //*********************Load XML configuration***********************************
         ApplicationContext xmlContext = new ClassPathXmlApplicationContext("spring.xml");
 
@@ -53,6 +56,32 @@ public class SpringDemoApplication {
         //Get bean from XML configuration
         Human obj_2 = (Human) xmlContext.getBean("human_1"); //here you have to specify the id which is defined in xml file
         obj_2.work();
+
+        //*********************Load Java Based configuration***********************************
+        ApplicationContext javaBasedConfigurationContext = new AnnotationConfigApplicationContext(AppConfig.class);
+
+        Dog obj_8 = javaBasedConfigurationContext.getBean(Dog.class);
+        obj_8.bark();
+
+        //by default the name of the method is the bean name
+        Dog obj_9 = javaBasedConfigurationContext.getBean("dog", Dog.class);
+        obj_9.bark();
+
+        //inside the config file you can define multiple names for the same bean
+        Dog obj_10 = javaBasedConfigurationContext.getBean("zeeba", Dog.class);
+        obj_10.bark();
+
+        Dog obj_11 = javaBasedConfigurationContext.getBean("rexy", Dog.class);
+        obj_11.bark();
+
+        Dog obj_12 = javaBasedConfigurationContext.getBean("teddy", Dog.class);
+        obj_12.bark();
+
+        //by default every bean will be singleton
+
+        //setup primary bean
+        Dog obj_13 = javaBasedConfigurationContext.getBean("dog2", Dog.class);
+        obj_13.bark();
 
 
         //******************************Important****************************//
