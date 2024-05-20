@@ -4,7 +4,7 @@ public class DogFood implements Food{
 
     @Override
     public void eat() {
-        System.out.println("Eating do foods");
+        System.out.println("Eating dog foods");
     }
 
 }

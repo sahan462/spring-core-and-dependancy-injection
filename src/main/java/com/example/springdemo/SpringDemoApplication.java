@@ -64,7 +64,7 @@ public class SpringDemoApplication {
         obj_8.bark();
 
         //by default the name of the method is the bean name
-        Dog obj_9 = javaBasedConfigurationContext.getBean("dog", Dog.class);
+        Dog obj_9 = javaBasedConfigurationContext.getBean(Dog.class);
         obj_9.bark();
 
         //inside the config file you can define multiple names for the same bean
@@ -82,6 +82,7 @@ public class SpringDemoApplication {
         //setup primary bean
         Dog obj_13 = javaBasedConfigurationContext.getBean("dog2", Dog.class);
         obj_13.bark();
+        obj_13.getfood().eat();
 
 
         //******************************Important****************************//
